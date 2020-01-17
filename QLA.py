@@ -49,6 +49,7 @@ class QLAgent(object):
         new_val = reward + (self.gamma * np.amax(q1)) - q0[actindex]
         self.qTable[statindex][actindex] = q0[actindex] + (self.alpha * new_val)
 
+    # This function is taken from maurock's DQN impl
     def get_state(self, game, player, food):
         state = [
             (player.x_change == 20 and player.y_change == 0 and ((list(map(add, player.position[-1], [20, 0])) in player.position) or
